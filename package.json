@@ -1,0 +1,26 @@
+{
+  "name": "nolatech-full-stack",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "build:backend": "cd backend && tsc",
+    "build:frontend": "cd frontend && npm run build",
+    "build": "npm run build:backend && npm run build:frontend"
+  },
+  "keywords": [],
+  "author": "Felix Pacheco",
+  "license": "ISC",
+  "description": "Objetivo: Desarrollar una aplicación web para realizar evaluaciones 360 grados de empleados remotos en una empresa de desarrollo de aplicaciones.",
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "typescript": "^5.7.3"
+  }
+}
