@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 
 import authRoutes from './routes/auth.routes.js';
 import employeeRoutes from './routes/employees.routes.js';
+import evaluationRoutes from './routes/evaluation.routes.js';
 
 dotenv.config();
 
@@ -19,6 +20,7 @@ app.use(express.json());
 
 app.use('/api/auth', authRoutes);
 app.use('/api/employees', employeeRoutes);
+app.use('/api/evaluations', evaluationRoutes);
 
 
 // Conectar a MongoDB
