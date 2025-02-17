@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import express from 'express';
 import mongoose from 'mongoose';
 
-import authRoutes from './routes/auth.routes.ts';
+import authRoutes from './routes/auth.routes';
 
 dotenv.config();
 
@@ -20,7 +20,7 @@ app.use('/api/auth', authRoutes);
 
 
 // Conectar a MongoDB
-mongoose.connect(process.env.MONGO_URI as string)
+mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log('MongoDB conectado 🍀'))
     .catch(err => console.log('Error conectando a MongoDB: ❌', err));
 
