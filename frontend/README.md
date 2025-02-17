@@ -1,50 +1,23 @@
-# React + TypeScript + Vite
+# Frontend
+ ## Crear una interfaz de usuario responsiva con los siguientes componentes:
+- Página de registro e inicio de sesión
+- Dashboard para diferentes roles (Admin, Manager, Employee)
+- Formulario para crear y editar evaluaciones
+- Interfaz para completar evaluaciones (autoevaluación y evaluación de
+colegas)
+- Visualización de resultados de evaluaciones (gráficos y tablas)
+- Página de perfil de empleado con historial de evaluaciones
+2. Implementar gestión de estado utilizando Redux o Context API
+3. Utilizar React Router para la navegación
+4. Crear formularios dinámicos para las evaluaciones (diferentes categorías y
+preguntas)
+5. Implementar visualizaciones de datos (gráficos de radar, barras, etc.) para los
+resultados
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Diseño propuesto:
+1. Utilizar un diseño profesional y moderno, adecuado para una herramienta de RRHH
+2. Implementar una paleta de colores que transmita confianza y profesionalismo
+(sugerir al menos 3 colores principales)
+3. Usar iconos intuitivos para las diferentes acciones y secciones
+4. Asegurar que la interfaz sea responsiva y funcione bien en dispositivos móviles
+5. Implementar un diseño accesible (considerar contraste, tamaños de fuente, etc.)
