@@ -14,3 +14,15 @@ export const createEvaluation = async (req, res) => {
         handleErrors(error, res);
     }
 };
+
+export const getEvaluationById = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const evaluation = await Evaluation.findById(id).populate('employee', 'name email');
+        if (!evaluation) throw new Error(ERRORS.NOT_FOUND);
+        res.status(200).json(evaluation);
+    }
+    catch (error) {
+        handleErrors(error, res);
+    }
+}
