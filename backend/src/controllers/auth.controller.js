@@ -1,8 +1,8 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
-import { Employee } from '../models/employee.model';
-import { User } from '../models/user.model';
+import { Employee } from '../models/employee.model.js';
+import { User } from '../models/user.model.js';
 
 const createUser = async ({ email, password, role }) => {
     const hashedPassword = await bcrypt.hash(password, 10);
