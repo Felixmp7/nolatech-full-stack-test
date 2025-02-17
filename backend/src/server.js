@@ -23,6 +23,8 @@ app.use('/api/employees', employeeRoutes);
 app.use('/api/evaluations', evaluationRoutes);
 
 
+
+console.log('Conectando a MongoDB 🚀...');
 // Conectar a MongoDB
 mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log('MongoDB conectado 🍀'))
