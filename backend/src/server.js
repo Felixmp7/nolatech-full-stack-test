@@ -1,11 +1,11 @@
 import cors from 'cors';
 import dotenv from 'dotenv';
 import express from 'express';
-import mongoose from 'mongoose';
 
+import { connectToMongo } from './database/mongoose.js';
 import authRoutes from './routes/auth.routes.js';
 import employeeRoutes from './routes/employees.routes.js';
-import evaluationRoutes from './routes/evaluation.routes.js';
+import evaluationTemplateRoutes from './routes/evaluationTemplate.routes.js';
 
 dotenv.config();
 
@@ -20,15 +20,9 @@ app.use(express.json());
 
 app.use('/api/auth', authRoutes);
 app.use('/api/employees', employeeRoutes);
-app.use('/api/evaluations', evaluationRoutes);
+app.use('/api/evaluationTemplates', evaluationTemplateRoutes);
 
-
-
-console.log('Conectando a MongoDB 🚀...');
-// Conectar a MongoDB
-mongoose.connect(process.env.MONGO_URI)
-    .then(() => console.log('MongoDB conectado 🍀'))
-    .catch(err => console.log('Error conectando a MongoDB: ❌', err));
+connectToMongo();
 
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en el puerto 🚀 ${PORT}`);
