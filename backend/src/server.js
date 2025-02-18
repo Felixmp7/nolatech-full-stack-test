@@ -25,5 +25,5 @@ app.use('/api/evaluationTemplates', evaluationTemplateRoutes);
 connectToMongo();
 
 app.listen(PORT, () => {
-    console.log(`Servidor corriendo en el puerto 🚀 ${PORT}`);
+    console.log(`Server running in port 🚀 ${PORT}`);
 });
