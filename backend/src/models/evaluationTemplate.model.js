@@ -11,7 +11,9 @@ const EvaluationTemplateSchema = new Schema({
                 type: [
                     {
                         label: { type: String },
-                        score: { type: Number, required: true, min: 1, max: 5}
+                        score: {
+                            type: Number, required: true, min: 1, max: 5
+                        }
                     }
                 ],
                 required: true
