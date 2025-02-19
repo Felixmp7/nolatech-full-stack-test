@@ -1,3 +1,4 @@
+export const ok = (res, data) => res.status(200).json(data);
 export const badRequest = (res, message = 'Missing required values') => res.status(400).json({ message });
 export const unauthorized = (res, message = 'Unauthorized') => res.status(401).json({ message });
 export const forbidden = (res, message = 'Forbidden') => res.status(403).json({ message });
