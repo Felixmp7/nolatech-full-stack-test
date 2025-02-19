@@ -14,4 +14,4 @@
 2. Implementar autenticación JWT y manejo de roles (Admin, Manager, Employee)
 3. Crear modelos de datos para Usuario, Empleado, Evaluación y Feedback ✅
 4. Implementar lógica para calcular resultados de evaluaciones
-5. Utilizar middleware para manejar errores y validar datos de entrada
+5. Utilizar middleware para manejar errores y validar datos de entrada ✅

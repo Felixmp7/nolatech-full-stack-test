@@ -46,6 +46,18 @@
     "no-path-concat": "error",
     "no-prototype-builtins": "error",
     "no-return-assign": "error",
-    "no-self-compare": "error"
+    "no-self-compare": "error",
+    "object-curly-newline": [
+      "error",
+      {
+        "multiline": true,
+        "minProperties": 3,
+        "consistent": true
+      }
+    ],
+    "object-curly-spacing": [
+      "error",
+      "always"
+    ]
   }
 }
