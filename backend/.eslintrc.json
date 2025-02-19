@@ -1,0 +1,51 @@
+{
+  "env": {
+    "node": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2022,
+    "sourceType": "module"
+  },
+  "rules": {
+    "no-console": "off",
+    "semi": [
+      "error",
+      "always"
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "indent": [
+      "error",
+      4
+    ],
+    "vars-on-top": "error",
+    "no-var": "error",
+    "prefer-const": "error",
+    "no-unused-vars": "error",
+    "no-undef": "error",
+    "no-const-assign": "error",
+    "no-new-object": "error",
+    "no-array-constructor": "error",
+    "no-new-wrappers": "error",
+    "no-new-func": "error",
+    "no-with": "error",
+    "no-caller": "error",
+    "no-eval": "error",
+    "no-implied-eval": "error",
+    "no-extend-native": "error",
+    "no-extra-bind": "error",
+    "no-loop-func": "error",
+    "no-new-symbol": "error",
+    "no-new-require": "error",
+    "no-path-concat": "error",
+    "no-prototype-builtins": "error",
+    "no-return-assign": "error",
+    "no-self-compare": "error"
+  }
+}

@@ -12,20 +12,20 @@ const createUser = async ({ email, password, role }) => {
         await user.save();
         return user;
     } catch (error) {
-       throw new Error(error);
+        throw new Error(error);
     }
 
 };
 
 const createEmployee = async ({ userId, fullName, position }) => {
-     try {
-         const employee = new Employee({ userId, fullName, position });
-         await employee.save();
-         return employee;
-     } catch (error) {
+    try {
+        const employee = new Employee({ userId, fullName, position });
+        await employee.save();
+        return employee;
+    } catch (error) {
         throw new Error(error);
-     }
-}
+    }
+};
 
 export const register = async (req, res) => {
     try {
@@ -37,7 +37,7 @@ export const register = async (req, res) => {
 
         res.status(201).json({ message: 'Usuario registrado ✅', user: { id: user._id, email, role }, employee });
     } catch (error) {
-        // console.log({ error, message: error.message, name: error.name, log: "register" });
+    // console.log({ error, message: error.message, name: error.name, log: "register" });
         handleErrors(error, res);
     }
 };
@@ -53,7 +53,7 @@ export const login = async (req, res) => {
         const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1h' });
         res.status(200).json({ token });
     } catch (error) {
-        // console.log({ error, message: error.message, name: error.name, log: "register" });
+    // console.log({ error, message: error.message, name: error.name, log: "register" });
         handleErrors(error, res);
     }
 };

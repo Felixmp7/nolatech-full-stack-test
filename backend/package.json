@@ -6,10 +6,11 @@
   "scripts": {
     "dev": "node --watch src/server.js",
     "build": "tsc",
-    "start": "node dist/index.js"
+    "start": "node dist/index.js",
+    "lint": "eslint . --fix"
   },
   "keywords": [],
-  "author": "",
+  "author": "Felix Pacheco",
   "license": "ISC",
   "description": "",
   "dependencies": {

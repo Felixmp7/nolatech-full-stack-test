@@ -9,7 +9,7 @@ export const createEvaluation = async (req, res) => {
         await newEvaluation.save();
         res.status(201).json({ message: 'Evaluation Template created successfully ✅', newEvaluationTemplate: newEvaluation });
     } catch (error) {
-         console.log({ error, errors: error.errors, message: error.message, name: error.name, log: "createEvaluation" });
+        console.log({ error, errors: error.errors, message: error.message, name: error.name, log: 'createEvaluation' });
         handleErrors(error, res);
     }
 };
@@ -22,10 +22,10 @@ export const getEvaluationById = async (req, res) => {
         res.status(200).json(evaluation);
     }
     catch (error) {
-          console.log({ error, errors: error.errors, message: error.message, name: error.name, log: "createEvaluation" });
+        console.log({ error, errors: error.errors, message: error.message, name: error.name, log: 'createEvaluation' });
         handleErrors(error, res);
     }
-}
+};
 
 export const updateEvaluationById = async (req, res) => {
     const { id } = req.params;
@@ -46,8 +46,8 @@ export const updateEvaluationById = async (req, res) => {
             errors: error.errors,
             message: error.message,
             name: error.name,
-            log: "updateEvaluationById"
+            log: 'updateEvaluationById'
         });
         handleErrors(error, res);
     }
-}
+};
