@@ -47,6 +47,34 @@
     "no-prototype-builtins": "error",
     "no-return-assign": "error",
     "no-self-compare": "error",
+    "max-depth": [
+      "error",
+      4
+    ],
+    "max-lines": [
+      "error",
+      300
+    ],
+    "max-nested-callbacks": [
+      "error",
+      3
+    ],
+    "max-params": [
+      "error",
+      3
+    ],
+    "max-statements": [
+      "error",
+      10
+    ],
+    "complexity": [
+      "error",
+      5
+    ],
+    "max-lines-per-function": [
+      "error",
+      50
+    ],
     "object-curly-newline": [
       "error",
       {
