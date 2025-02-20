@@ -1,20 +1,22 @@
 import { Router } from 'express';
 import {
-    createEvaluation,
-    getEvaluationById,
-    updateEvaluationById
+    createEvaluationTemplate,
+    getAllEvaluationTemplates,
+    getEvaluationTemplateById,
+    updateEvaluationTemplateById
 } from '../controllers/evaluationTemplate.controller.js';
 import { validateInputs } from '../middlewares/validate.middleware.js';
 import {
-    validateCreateEvaluation,
-    validateGetEvaluationById,
-    validateUpdateEvaluationById
+    validateCreateEvaluationTemplate,
+    validateGetEvaluationTemplateById,
+    validateUpdateEvaluationTemplateById
 } from '../validations/evaluationTemplate.validation.js';
 
 const router = Router();
 
-router.post('/create', validateCreateEvaluation(), validateInputs, createEvaluation);
-router.get('/:id', validateGetEvaluationById(), validateInputs, getEvaluationById);
-router.put('/:id', validateUpdateEvaluationById(), validateInputs, updateEvaluationById);
+router.post('/create', validateCreateEvaluationTemplate(), validateInputs, createEvaluationTemplate);
+router.get('/:id', validateGetEvaluationTemplateById(), validateInputs, getEvaluationTemplateById);
+router.put('/:id', validateUpdateEvaluationTemplateById(), validateInputs, updateEvaluationTemplateById);
+router.get('/', getAllEvaluationTemplates);
 
 export default router;

@@ -1,6 +1,6 @@
 import { checkSchema } from 'express-validator';
 
-const createEvaluationSchema = {
+const createEvaluationTemplateSchema = {
     title: {
         in: ['body'],
         isString: true,
@@ -35,9 +35,9 @@ const updateEvaluationByIdSchema = {
         isMongoId: true,
         errorMessage: 'Invalid Evaluation ID'
     },
-    ...createEvaluationSchema
+    ...createEvaluationTemplateSchema
 };
 
-export const validateCreateEvaluation = () => checkSchema(createEvaluationSchema);
-export const validateGetEvaluationById = () => checkSchema(getEvaluationByIdSchema);
-export const validateUpdateEvaluationById = () => checkSchema(updateEvaluationByIdSchema);
+export const validateCreateEvaluationTemplate = () => checkSchema(createEvaluationTemplateSchema);
+export const validateGetEvaluationTemplateById = () => checkSchema(getEvaluationByIdSchema);
+export const validateUpdateEvaluationTemplateById = () => checkSchema(updateEvaluationByIdSchema);

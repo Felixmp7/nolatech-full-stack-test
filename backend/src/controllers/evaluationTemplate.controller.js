@@ -3,8 +3,9 @@ import { matchedData } from 'express-validator';
 import { ERRORS } from '../constants/errors.js';
 import { EvaluationTemplate } from '../models/evaluationTemplate.model.js';
 import { handleErrors } from '../utils/errorHandler.utils.js';
+import { ok } from '../utils/httpResponse.utils.js';
 
-export const createEvaluation = async (req, res) => {
+export const createEvaluationTemplate = async (req, res) => {
     const {
         title, description, questions
     } = matchedData(req);
@@ -23,13 +24,13 @@ export const createEvaluation = async (req, res) => {
             errors: error.errors,
             message: error.message,
             name: error.name,
-            log: 'createEvaluation'
+            log: 'createEvaluationTemplate'
         });
         handleErrors(error, res);
     }
 };
 
-export const getEvaluationById = async (req, res) => {
+export const getEvaluationTemplateById = async (req, res) => {
     const { id } = matchedData(req, { locations: ['params'] });
     try {
         const evaluation = await EvaluationTemplate.findById(id);
@@ -38,13 +39,13 @@ export const getEvaluationById = async (req, res) => {
     }
     catch (error) {
         console.log({
-            error, errors: error.errors, message: error.message, name: error.name, log: 'createEvaluation'
+            error, errors: error.errors, message: error.message, name: error.name, log: 'getEvaluationTemplateById'
         });
         handleErrors(error, res);
     }
 };
 
-export const updateEvaluationById = async (req, res) => {
+export const updateEvaluationTemplateById = async (req, res) => {
     const { id } = matchedData(req, { locations: ['params'] });
     const {
         title, description, questions
@@ -65,7 +66,23 @@ export const updateEvaluationById = async (req, res) => {
             errors: error.errors,
             message: error.message,
             name: error.name,
-            log: 'updateEvaluationById'
+            log: 'updateEvaluationTemplateById'
+        });
+        handleErrors(error, res);
+    }
+};
+
+export const getAllEvaluationTemplates = async (_req, res) => {
+    try {
+        const evaluationTemplates = await EvaluationTemplate.find();
+        ok(res, evaluationTemplates);
+    } catch (error) {
+        console.log({
+            error,
+            errors: error.errors,
+            message: error.message,
+            name: error.name,
+            log: 'getAllEvaluationTemplates'
         });
         handleErrors(error, res);
     }
