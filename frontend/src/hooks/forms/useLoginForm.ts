@@ -18,7 +18,7 @@ export const useLoginForm = () => {
         onSubmit: async ({ value: formValues }) => {
             const response = await loginService({ ...formValues })
             if (response.isSuccess) {
-                setAccessToken(response.data.token);
+                setAccessToken(response!.data!.token);
                 toast.success('Login successful')
 
                 return navigate(PATHS.root, { replace: true });

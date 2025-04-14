@@ -2,7 +2,7 @@ import { API_PATHS } from "@/constants"
 import { LoginForm, LoginResponse } from "@/models/auth.interfaces"
 import { APIResponse } from "@/models/global.types"
 
-export const loginService = async ({ email, password }: LoginForm): Promise<APIResponse<LoginResponse>> => {
+export const loginService = async ({ email, password }: LoginForm): Promise<APIResponse<LoginResponse | null>> => {
     try {
         const response = await fetch(API_PATHS.login, {
             method: 'POST',
@@ -13,9 +13,10 @@ export const loginService = async ({ email, password }: LoginForm): Promise<APIR
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
         return {
-            success: false,
             data: null,
-            error: error instanceof Error ? error.message : String(error),
-        } as APIResponse<LoginResponse>;
+            status: 500,
+            isSuccess: false,
+            errors: [error instanceof Error ? error.message : String(error)],
+        };
     }
 }
