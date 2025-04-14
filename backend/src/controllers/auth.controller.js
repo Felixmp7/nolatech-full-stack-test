@@ -1,118 +1,43 @@
-import bcrypt from 'bcryptjs';
 import { matchedData } from 'express-validator';
-import jwt from 'jsonwebtoken';
 
-import { ERRORS } from '../constants/errors.js';
-import { Employee } from '../models/employee.model.js';
-import { User } from '../models/user.model.js';
+import { createEmployeeService } from '../services/employee.service.js';
+import { loginService } from '../services/login.service.js';
+import { createUserService } from '../services/user.service.js';
 import { handleErrors } from '../utils/errorHandler.utils.js';
-import { ok } from '../utils/httpResponse.utils.js';
-
-const createUser = async ({
-    email, password, role 
-}) => {
-    try {
-        const hashedPassword = await bcrypt.hash(password, 10);
-        const user = new User({
-            email, password: hashedPassword, role 
-        });
-        await user.save();
-        return {
-            error: null,
-            data: user
-        };
-    } catch (error) {
-        console.log({
-            error, message: error.message, name: error.name, log: 'createUser' 
-        });
-        return {
-            error,
-            data: null
-        };
-    }
-};
-
-const createEmployee = async ({
-    userId, fullName, position 
-}) => {
-    try {
-        const employee = new Employee({
-            userId, fullName, position 
-        });
-        await employee.save();
-        return {
-            error: null,
-            data: employee
-        };
-    } catch (error) {
-        console.log({
-            error, message: error.message, name: error.name, log: 'createEmployee' 
-        });
-        return {
-            error: ERRORS.INTERNAL_SERVER_ERROR,
-            data: null
-        };
-    }
-};
-
-const loginUser = async ({ email, password }) => {
-    try {
-        const user = await User.findOne({ email });
-        if (!user || !await bcrypt.compare(password, user.password)) {
-            return { error: ERRORS.INVALID_CREDENTIALS, data: null };
-        }
-        const token = jwt.sign(
-            {
-                id: user._id,
-                role: user.role
-            },
-            process.env.JWT_SECRET,
-            { expiresIn: '1h' }
-        );
-        return {
-            error: null,
-            data: token
-        };
-    } catch (error) {
-        console.log({
-            error, message: error.message, name: error.name, log: 'loginUser' 
-        });
-        return {
-            error,
-            data: null
-        };
-    }
-};
+import { ok, returnAPIResponse } from '../utils/httpResponse.utils.js';
 
 export const register = async (req, res) => {
     const {
-        email, password, role, fullName, position 
+        email, password, role, fullName, position
     } = matchedData(req);
 
-    const { data: user, error: userError } = await createUser({
-        email, password, role 
+    const { data: user, error: userError } = await createUserService({
+        email, password, role
     });
 
     if (userError) return handleErrors(userError, res);
 
-    const { data: employee, error: employeeError } = await createEmployee({
+    const { data: employee, error: employeeError } = await createEmployeeService({
         userId: user._id, fullName, position
     });
 
     if (employeeError) return handleErrors(userError || employeeError, res);
 
-    return res.status(201).json({
-        message: 'User created successfully ✅',
-        user: {
-            id: user._id, email, role 
-        },
-        employee
-    });
+    return res.status(201).json(returnAPIResponse({
+        status: 201,
+        success: true,
+        data: {
+            user: {
+                id: user._id, email, role
+            },
+            employee
+        }
+    }));
 };
 
 export const login = async (req, res) => {
     const { email, password } = matchedData(req);
-    const { data: token, error } = await loginUser({ email, password });
+    const { data: token, error } = await loginService({ email, password });
 
     if (error) return handleErrors(error, res);
     return ok(res, { token });
