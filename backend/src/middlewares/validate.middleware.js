@@ -3,7 +3,7 @@ import { badRequest } from '../utils/httpResponse.utils.js';
 
 const formattedErrors = validationResult.withDefaults({
     formatter: (error) => ({
-        value: error.value,
+        value: error.value ?? 'non-value provided',
         msg: error.msg,
         path: error.path,
     }),
