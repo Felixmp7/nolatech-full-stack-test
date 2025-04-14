@@ -18,7 +18,10 @@ export const handleErrors =  (error, res) => {
     if (error.message === ERRORS.INVALID_CREDENTIALS) return badRequest(res, 'Invalid Credentials!');
 
     if (error.code === MONGO_ERRORS.DUPLICATE_KEY) return res.status(409).json(returnAPIResponse({
-        message: [`Duplicated resource ${JSON.stringify(error.keyValue)}`]
+        data: null,
+        status: 409,
+        isSuccess: false,
+        errors: [`Duplicated resource ${JSON.stringify(error.keyValue)}`],
     }));
 
     return internalServerError(res, [error.message]);
