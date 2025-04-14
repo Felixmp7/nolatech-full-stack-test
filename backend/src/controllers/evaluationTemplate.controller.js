@@ -5,6 +5,7 @@ import { EvaluationTemplate } from '../models/evaluationTemplate.model.js';
 import { handleErrors } from '../utils/errorHandler.utils.js';
 import { ok } from '../utils/httpResponse.utils.js';
 
+// TODO: Desacoplar siguiendo el patrón repository
 export const createEvaluationTemplate = async (req, res) => {
     const {
         title, description, questions
