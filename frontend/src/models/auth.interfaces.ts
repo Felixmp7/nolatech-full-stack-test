@@ -5,6 +5,10 @@ export interface LoginForm {
     password: string;
 }
 
+export interface LoginResponse {
+    token: string;
+}
+
 export interface SignupForm {
     email: string;
     password: string;

@@ -4,7 +4,7 @@ export const returnAPIResponse = ({
     status,
     isSuccess,
     data,
-    errors: errors?.map((error) => ({ message: error })) || null,
+    errors: errors?.map((error) => (error)) || null,
 });
 
 export const ok = (res, data) => res.status(200).json(returnAPIResponse({

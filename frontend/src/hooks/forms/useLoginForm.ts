@@ -17,13 +17,13 @@ export const useLoginForm = () => {
         validators: { onChange: loginSchema },
         onSubmit: async ({ value: formValues }) => {
             const response = await loginService({ ...formValues })
-            if (response.success) {
-                setAccessToken(response.data.token);
+            if (response.isSuccess) {
+                setAccessToken(response!.data!.token);
                 toast.success('Login successful')
 
                 return navigate(PATHS.root, { replace: true });
             }
-            toast.error(response.error || 'Something went wrong');
+            toast.error(response.errors ? response.errors[0] : 'Something went wrong');
         },
     })
 
