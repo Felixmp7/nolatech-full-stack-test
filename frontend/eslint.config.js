@@ -1,7 +1,7 @@
 import js from '@eslint/js'
-import globals from 'globals'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
+import globals from 'globals'
 import tseslint from 'typescript-eslint'
 
 export default tseslint.config(
@@ -19,6 +19,46 @@ export default tseslint.config(
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
+      "indent": [
+        "error",
+        4
+      ],
+      "max-depth": [
+        "error",
+        4
+      ],
+      "max-lines": [
+        "error",
+        300
+      ],
+      "max-nested-callbacks": [
+        "error",
+        3
+      ],
+      "max-params": [
+        "error",
+        3
+      ],
+      "max-statements": [
+        "error",
+        10
+      ],
+      "complexity": [
+        "error",
+        5
+      ],
+      "object-curly-newline": [
+        "error",
+        {
+          "multiline": true,
+          "minProperties": 3,
+          "consistent": true
+        }
+      ],
+      "object-curly-spacing": [
+        "error",
+        "always"
+      ],
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },
