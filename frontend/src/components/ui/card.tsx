@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/utils/tw-merge.utils"
 
 function Card({ className, ...props }: React.ComponentProps<"div">) {
     return (
@@ -66,5 +66,6 @@ function CardFooter({ className, ...props }: React.ComponentProps<"div">) {
 }
 
 export {
-    Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent 
+    Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle
 }
+

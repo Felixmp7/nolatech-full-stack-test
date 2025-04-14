@@ -2,7 +2,7 @@ import { GalleryVerticalEnd } from "lucide-react"
 import { PropsWithChildren } from "react"
 
 import { GITHUB_REPO_URL } from "@/constants"
-import { cn } from "@/lib/utils"
+import { cn } from "@/utils/tw-merge.utils"
 
 interface Props extends PropsWithChildren {
     placeholderImage: string

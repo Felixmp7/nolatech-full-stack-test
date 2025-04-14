@@ -2,7 +2,7 @@ import { ComponentPropsWithoutRef } from "react";
 import { NavLink } from "react-router";
 
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/tw-merge.utils";
 import { InputLabel } from "../ui/input.label";
 import {
     Select, SelectContent, SelectItem, SelectTrigger, SelectValue
