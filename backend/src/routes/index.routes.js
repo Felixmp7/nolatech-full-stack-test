@@ -1,13 +1,17 @@
-import { app } from '../server';
+import { Router } from 'express';
 
-import { authenticate } from './middlewares/auth.middleware.js';
-import authRoutes from './routes/auth.routes.js';
-import employeeRoutes from './routes/employees.routes.js';
-import evaluationRoutes from './routes/evaluation.routes.js';
-import evaluationTemplateRoutes from './routes/evaluationTemplate.routes.js';
+import { authenticate } from '../middlewares/auth.middleware.js';
+import authRoutes from './auth.routes.js';
+import employeeRoutes from './employees.routes.js';
+import evaluationRoutes from './evaluation.routes.js';
+import evaluationTemplateRoutes from './evaluationTemplate.routes.js';
 
-app.use('/auth', authRoutes);
-app.use(authenticate);
-app.use('/employees', employeeRoutes);
-app.use('/evaluationTemplates', evaluationTemplateRoutes);
-app.use('/evaluations', evaluationRoutes);
+const router = Router();
+
+router.use('/auth', authRoutes);
+router.use(authenticate);
+router.use('/employees', employeeRoutes);
+router.use('/evaluationTemplates', evaluationTemplateRoutes);
+router.use('/evaluations', evaluationRoutes);
+
+export default router;

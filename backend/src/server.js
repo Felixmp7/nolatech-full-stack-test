@@ -1,11 +1,14 @@
 import cors from 'cors';
+import dotenv from 'dotenv';
 import express from 'express';
 
 import { connectToDB } from './database/index.js';
 import { errorHandler } from './middlewares/errors.middleware.js';
 import routes from './routes/index.routes.js';
 
-export const app = express();
+dotenv.config();
+
+const app = express();
 const PORT = process.env.PORT || 5000;
 
 connectToDB();
