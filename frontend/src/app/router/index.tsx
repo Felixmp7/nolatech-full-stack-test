@@ -11,6 +11,13 @@ import { isLoggedIn } from "@/utils/localstorage.utils";
 export const router = createBrowserRouter([
     {
         index: true,
+        loader: () => {
+            const auth = isLoggedIn();
+            if (!auth) {
+                return redirect(PATHS.login);
+            }
+            return '...loading'
+        },
         element: <div>HOME</div>,
     },
     {
